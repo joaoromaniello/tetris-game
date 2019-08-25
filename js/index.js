@@ -27,6 +27,7 @@ function loop() {
     window.requestAnimationFrame(loop, canvas);
     inicializa();
     update();
+  
 }
 
 function createRect(x, y, lx, ly) {
@@ -50,30 +51,36 @@ function inicializa(){
     document.addEventListener('keydown', pegaTecla);
 }
 
+function clear(ctx) {
+    ctx.clearRect(0, 0,canvas.height,canvas.width);
+}
+
 function pegaTecla(){
   var tecla = event.keyCode;
   if(tecla == "40"){
   y += 12;
   i = 0;
+  clear(ctx);
  }
  if(tecla == "39"){
  somador += 12
  i = 0;
+ clear(ctx);
   }
 if(tecla == "37"){
     somador -= 12
     i = 0;
+    clear(ctx);
    }
  
 if(tecla == "38"){
     y -= 12
     i = 0;
+    clear(ctx);
    }
    
 }
 
-function clear() {
-    clearRect(0, 0,canvas.height,canvas.width);
-}
+
 
 loop();
