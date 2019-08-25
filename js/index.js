@@ -72,8 +72,8 @@ if(tecla == "38"){
    
 }
 
-function clear(c) {
-    c.clearRect(0, 0, WIDTH, HEIGHT);
+function clear() {
+    clearRect(0, 0,canvas.height,canvas.width);
 }
 
 loop();
