@@ -6,11 +6,17 @@ let cx = 125;
 var i = 0;
 var stat = 0;
 var somador = 0;
+var my_gradient = ctx.createLinearGradient(0, 0, 0, 170);
+my_gradient.addColorStop(0, "black");
+my_gradient.addColorStop(1, "red");
+
 function update() {
 if(i!=1){
     for(;i<4;i++){
-        createRect(x, y, 30, 30);
-        x+= 30;
+        createRect(x, y, 60, 60);
+        ctx.fillStyle = my_gradient;
+        ctx.fillRect(x, y, 60, 60);
+        x+= 60;
 }
 }
 i = 1;
@@ -48,19 +54,26 @@ function pegaTecla(){
   var tecla = event.keyCode;
   if(tecla == "40"){
   y += 12;
-  i = 0;}
+  i = 0;
+ }
  if(tecla == "39"){
  somador += 12
  i = 0;
-}
+  }
 if(tecla == "37"){
     somador -= 12
     i = 0;
    }
-
+ 
 if(tecla == "38"){
     y -= 12
     i = 0;
    }
+   
 }
+
+function clear(c) {
+    c.clearRect(0, 0, WIDTH, HEIGHT);
+}
+
 loop();
