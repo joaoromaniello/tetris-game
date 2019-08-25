@@ -11,8 +11,6 @@ my_gradient.addColorStop(0, "black");
 my_gradient.addColorStop(1, "red");
 
 function update() {
-    ctx.lineWidth = 1;
-    ctx.strokeRect(0, 25, canvas.width, 0);
     if (i != 1) {
         for (; i < 4; i++) {
             createRect(x, y, 60, 60);
@@ -23,67 +21,66 @@ function update() {
     }
     i = 1;
     x = 100 + somador;
+}
 
-    function loop() {
-        window.requestAnimationFrame(loop, canvas);
-        inicializa();
-        update();
+function loop() {
+    window.requestAnimationFrame(loop, canvas);
+    inicializa();
+    update();
 
+}
+
+function createRect(x, y, lx, ly) {
+    ctx.beginPath();
+    ctx.rect(x, y, lx, ly);
+    ctx.stroke();
+}
+function createCircle(posX, posY, raio) {
+    ctx.beginPath();
+    ctx.arc(posX, posY, raio, 0, 2 * Math.PI);
+    ctx.stroke();
+}
+
+function mexer(event) {
+    y += 10;
+    console.log(y);
+
+}
+
+function inicializa() {
+    document.addEventListener('keydown', pegaTecla);
+}
+
+function clear(ctx) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
+
+function pegaTecla() {
+    var tecla = event.keyCode;
+    if (tecla == "40") {
+        y += 12;
+        i = 0;
+        clear(ctx);
+    }
+    if (tecla == "39") {
+        somador += 12
+        i = 0;
+        clear(ctx);
+    }
+    if (tecla == "37") {
+        somador -= 12
+        i = 0;
+        clear(ctx);
     }
 
-    function createRect(x, y, lx, ly) {
-        ctx.beginPath();
-        ctx.rect(x, y, lx, ly);
-        ctx.stroke();
-    }
-    function createCircle(posX, posY, raio) {
-        ctx.beginPath();
-        ctx.arc(posX, posY, raio, 0, 2 * Math.PI);
-        ctx.stroke();
+    if (tecla == "38") {
+        y -= 12
+        i = 0;
+        clear(ctx);
     }
 
-    function mexer(event) {
-        y += 10;
-        console.log(y);
-    }
+}
 
-    function inicializa() {
-        document.addEventListener('keydown', pegaTecla);
-    }
 
-    function clear(ctx) {
-        ctx.clearRect(0, 0, canvas.height, canvas.width);
-    }
 
-    function pegaTecla() {
-        var tecla = event.keyCode;
-        if (tecla == "40") {
-            y += 12;
-            i = 0;
-            clear(ctx);
-        }
-        if (tecla == "39") {
-            somador += 12
-            i = 0;
-            clear(ctx);
-        }
-        if (tecla == "37") {
-            somador -= 12
-            i = 0;
-            clear(ctx);
-        }
-
-        if (tecla == "38") {
-            y -= 12
-            i = 0;
-            clear(ctx);
-        }
-
-    }
-
-    function clear() {
-        clearRect(0, 0, canvas.height, canvas.width);
-    }
-
-    loop();
-    addEventListener('keyup', eae());
+loop();
