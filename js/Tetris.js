@@ -15,6 +15,10 @@ class Tetris {
         }
     }
 
+    update() {
+
+    }
+
     draw() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         PIECES[actual].format.forEach((value, index) => {
