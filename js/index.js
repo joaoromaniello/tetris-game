@@ -6,6 +6,7 @@ var canGoLeft = canGoRight = true;
 var blockFalling = true;
 var currentPiece = new Tetris(actual, next);
 var goDown = 0;
+var stateBlocks = new StateBlocks();
 
 function createNewPiece() {
     actual = next;
@@ -26,6 +27,11 @@ function update() {
         currentPiece.move(false, 1);
     }
     currentPiece.draw();
+    if (currentPiece.y > 500) {
+        stateBlocks.push(currentPiece);
+        console.log(stateBlocks);
+        blockFalling = false;
+    }
 }
 
 function keyDown(event) {

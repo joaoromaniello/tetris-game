@@ -4,15 +4,20 @@ class Tetris {
         this.y = 0;
         this.actual = actual;
         this.next = next;
+        this.block = null;
     }
 
-    move(hor, position) {
+    move(hor, relative) {
         if (hor) {
-            this.x += position * 30;
+            this.x += relative * 30;
         }
         else {
-            this.y += position * 30; 
+            this.y += relative * 30;
         }
+    }
+
+    setBlock() {
+        this.block = PIECES[this.actual];
     }
 
     update() {
@@ -20,16 +25,17 @@ class Tetris {
     }
 
     draw() {
+        this.setBlock();
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        PIECES[actual].format.forEach((value, index) => {
+        this.block.format.forEach((value, index) => {
             if (value) {
-                ctx.fillStyle = PIECES[actual].color;
-                ctx.fillRect(this.x + 30*(index % 4), this.y + 30 * Math.floor(index / 4), 29, 29);
+                ctx.fillStyle = this.block.color;
+                ctx.fillRect(this.x + 30 * (index % 4), this.y + 30 * Math.floor(index / 4), 29, 29);
             }
         });
     }
-    
+
     rotate() {
-        
+
     }
 }
