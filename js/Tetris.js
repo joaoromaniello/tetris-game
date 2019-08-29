@@ -4,7 +4,7 @@ class Tetris {
         this.y = 0;
         this.actual = actual;
         this.next = next;
-        this.block = null;
+        this.block = PIECES[this.actual];
     }
 
     move(hor, relative) {
@@ -16,17 +16,12 @@ class Tetris {
         }
     }
 
-    setBlock() {
-        this.block = PIECES[this.actual];
-    }
-
     update() {
 
     }
 
     draw() {
-        this.setBlock();
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        // ctx.clearRect(0, 0, canvas.width, canvas.height);
         this.block.format.forEach((value, index) => {
             if (value) {
                 ctx.fillStyle = this.block.color;
