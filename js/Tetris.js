@@ -32,5 +32,49 @@ class Tetris {
 
     rotate() {
 
+     //  'I' type blocks rotations
+     if(this.block == PIECES[0] )
+        this.block = PIECES[1] //Change the current block to its rotated one
+
+     else if(this.block == PIECES[1])
+        this.block = PIECES[0]
+     
+    //'J' type blocks rotations
+     if(this.block == PIECES[2])
+        this.block = PIECES[3]
+
+     else if(this.block == PIECES[3])
+        this.block = PIECES[4]
+        
+     else if(this.block == PIECES[4])
+        this.block = PIECES[5]   
+    
+     else if(this.block == PIECES[5])
+        this.block = PIECES[2]   
+
+    //'S' type blocks rotations
+    if(this.block == PIECES[7])
+    this.block = PIECES[8]
+
+     else if(this.block == PIECES[8])
+    this.block = PIECES[7]
+    
+    //'T' type blocks rotations
+    if(this.block == PIECES[9])
+    this.block = PIECES[10]
+
+     else if(this.block == PIECES[10])
+    this.block = PIECES[11]
+
+    else if(this.block == PIECES[11])
+    this.block = PIECES[12]
+
+    else if(this.block == PIECES[12])
+    this.block = PIECES[9]
+
+    
+
+
+
     }
 }
