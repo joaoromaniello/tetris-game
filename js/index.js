@@ -1,7 +1,7 @@
 var canvas = document.querySelector('canvas');
 var ctx = canvas.getContext('2d');
-var actual = Math.floor(Math.random() * 7);
-var next = Math.floor(Math.random() * 7);
+var actual = Math.floor(Math.random() * 12);
+var next = Math.floor(Math.random() * 12);
 var canGoLeft = canGoRight = true;
 var blockFalling = true;
 var currentPiece = new Tetris(actual, next);
@@ -11,7 +11,7 @@ var evt = new Event('fall');
 
 function createNewPiece() {
     actual = next;
-    next = Math.floor(Math.random() * 7);
+    next = Math.floor(Math.random() * 12);
     currentPiece = new Tetris(actual, next);
     blockFalling = true;
 }
@@ -47,6 +47,8 @@ function keyDown(event) {
     } else if (keyDownCode === UP) {
         currentPiece.rotate();
     }
+    
+
 }
 
 function keyUp(event) {
